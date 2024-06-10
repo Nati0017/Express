@@ -18,7 +18,7 @@ app.use(express.json()); //para que express entienda los datos en formato json
 
 app.use(express.urlencoded({extended: false})); //para que express entienda los datos que vienen en formato undencoded 
 
-app.use("/api/users", (res, req) => {
+app.use("/api/users", (req, res) => {
     res.send("API REST GESTIÓN DE USUARIOS");
 }); 
 
