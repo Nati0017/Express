@@ -4,6 +4,7 @@
 
 const express = require(`express`); 
 const morgan = require(`morgan`); 
+const router = require("../router/users.routes")
 
 
 
@@ -18,8 +19,8 @@ app.use(express.json()); //para que express entienda los datos en formato json
 
 app.use(express.urlencoded({extended: false})); //para que express entienda los datos que vienen en formato undencoded 
 
-app.use("/api/users", (req, res) => {
-    res.send("API REST GESTIÓN DE USUARIOS");
-}); 
+
+//definimos rutas de la aplicación 
+app.use("/api/users", router); 
 
 module.exports = app; 
