@@ -15,7 +15,11 @@ const dataConection = async () => {
 
     } catch (error) {
         //sino captura el error 
-        console.log(error)
+        res.status(400).json ({
+        mesagge: "No se pudo crear",
+        status: 400,
+        
+        })
     }
 
 }
