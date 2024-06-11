@@ -3,8 +3,10 @@
 //definimos la estructura básica express
 
 const express = require(`express`); 
+
 const morgan = require(`morgan`); 
-const router = require("../router/users.routes")
+
+const router = require("../routes/users.routes")
 
 
 

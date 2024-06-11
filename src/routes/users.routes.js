@@ -2,6 +2,7 @@
 
 
 const express = require(`express`); 
+const { crearUsuario, login } = require("../controllers/user.controllers");
 
 
 const router = express.Router(); 
@@ -10,16 +11,12 @@ const router = express.Router();
 
 //ruta para crear un usuario ---> .POST
 
-router.post ("/crear-usuario", (req, res) => {
-    res.send("Lógica para crear un nuevo usuario"); //función que gestiona la creación de un usuario --- controlador 
-}); 
+router.post ("/crear-usuario", crearUsuario)
 
 
 //ruta para login de usuario  ---> POST 
 
-router.post("/login", (req, res) => {
-    res.send("Lógica login"); 
-}); 
+router.post("/login", login) 
 
 //ruta actualizar usuario ---> PUT 
 
