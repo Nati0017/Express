@@ -2,7 +2,8 @@
 
 
 //controlador para crear ususario 
-
+ 
+const bcrypt = require("bcrypt");
 const User = require("../models/user.model");
 
 const crearUsuario =  async (req,res) => {
@@ -22,9 +23,6 @@ if (!name && !lastName && !email && !password) {
 
 
 
-
-
-
 try {
 
 const usuarioExistente = await User.findOne({email: email})
@@ -38,13 +36,17 @@ if (usuarioExistente) {
 }
 
 
+// contraseña y ña vamos a encriptar 
+const salt = bcrypt.genSaltSync()   // salt es el poder de encriptación de la contraseña 
+const passwordEncriptada = bcrypt.hashSync(password, salt) // recibe los parámetros recibidos por el usuario (password) y el poder de encriptado (salt)
+
 
 
 const usuarioCreado = await User.create({
     name: name,
     lastName: lastName, 
     email: email,
-    password:password, 
+    password:passwordEncriptada, 
     active: true
 })
 
@@ -70,13 +72,6 @@ res.status (201).json ({
 };
 
 
-
-//controlador para login
-
-const login = (req, res) => {
-    res.send("Lógica login"); 
-};
-
 //controlador para actualizar ususario 
 
 
@@ -90,4 +85,4 @@ const login = (req, res) => {
 
 
 
-module.exports = { crearUsuario , login }
+module.exports = { crearUsuario }
